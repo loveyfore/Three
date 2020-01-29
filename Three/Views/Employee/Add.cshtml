@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+@model Employee
+
+<form asp-action="Add">
+    <input type="hidden" asp-for="DepartmentId" />
+
+    <div class="row form-group">
+        <div class="col-md-2 offset-md-2">
+            <label asp-for="FirstName"></label>
+        </div>
+        <div class="col-md-6">
+            <input class="form-control" asp-for="FirstName" />
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-2 offset-md-2">
+            <label asp-for="LastName"></label>
+        </div>
+        <div class="col-md-6">
+            <input class="form-control" asp-for="LastName" />
+        </div>
+    </div>
+
+    <!-- 如果填错了性别，会导致提交不上去 因为有模型的有效性检查 -->
+    <!--
+    <div class="row form-group">
+        <div class="col-md-2 offset-md-2">
+            <label asp-for="Gender"></label>
+        </div>
+        <div class="col-md-6">
+            <input class="form-control" asp-for="Gender" />
+        </div>
+    </div>
+    -->
+    <div class="row form-group">
+        <div class="col-md-2 offset-md-2">
+            <label asp-for="Gender"></label>
+        </div>
+        <div class="col-md-6">
+            <select class="form-control" asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()">
+            </select>
+        </div>
+    </div>
+    <!-- 如果重复写字段，发现后面的无效！！！-->
+    <!--
+    <div class="row form-group">
+        <div class="col-md-2 offset-md-2">
+            <label asp-for="Name"></label>
+        </div>
+        <div class="col-md-6">
+            <input class="form-control" asp-for="Name" />
+        </div>
+    </div>
+    -->
+
+    <div class="row">
+        <div class="col-md-2 offset-md-2">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+</form>

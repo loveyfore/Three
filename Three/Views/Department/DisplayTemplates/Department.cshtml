@@ -1,0 +1,22 @@
+﻿@model Three.Models.Department
+@using Microsoft.Extensions.Options
+@inject IOptions<ThreeOptions> options
+
+    <tr>
+        @if (Model.EmployeeCount > options.Value.BoldDepartmentEmployeeCountThreshold)
+        {
+            <!-- 部门人数超过30人，加粗显示部门名称 -->
+            <td><strong>@Model.Name</strong></td>
+        }
+        else
+        {
+            <td>@Model.Name</td>
+        }
+
+        <td>@Model.Location</td>
+        <td>@Model.EmployeeCount</td>
+
+        <td>
+            <a asp-controller="Employee" asp-action="Index" asp-route-departmentId="@Model.Id">Employees</a>
+        </td>
+    </tr>

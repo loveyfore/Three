@@ -1,0 +1,37 @@
+﻿@*
+//_ViewImports.cshtml统一引入过了！此处可以只引入单独需要的命名空间！！
+@using Three.Models;
+*@
+
+@model IEnumerable<Department>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-md-10 offset-md-2">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Employee</th>
+                <th>操作</th>
+            </tr>
+            @Html.DisplayForModel()
+        </table>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        @await Component.InvokeAsync("CompanySummary", new { title = "部门列表页的汇总" })
+        <vc:company-summary title="部门列表页的汇总2"></vc:company-summary>
+        
+    </div>
+    <div class="col-md-4">
+        <a asp-action="Add">Add</a>
+    </div>
+</div>
+
